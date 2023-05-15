@@ -2,7 +2,12 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; show lines and time
 (global-display-line-numbers-mode)
+(display-time-mode)
+
+;; lockfiles and backup files
+;; not working
 (setq create-lockfiles nil)
 (setq make-backup-files nil)
 
@@ -23,3 +28,24 @@
 (global-set-key "\C-xp" (lambda ()
   (interactive)
   (other-window -1)))
+
+;; set TAB to indent 4 spaces
+(setq-default tab-width 4)
+(global-set-key (kbd "TAB") #'my-insert-tab-char)
+(defun my-insert-tab-char ()
+  "Insert a tab char. (ASCII 9, \t)"
+  (interactive)
+  (insert "\t"))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(yafolding markdown-mode typescript-mode web-mode yaml-mode org-bullets org monitor json-mode js3-mode helm groovy-mode dockerfile-mode bicycle ansible-doc ansible)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
